@@ -1,7 +1,5 @@
 import phantom from 'phantom';
 
-import { WAIT_FOR_TIMED_OUT } from './wait-for';
-
 /**
  * Open the page aat the specified url
  * @param  {String} url
