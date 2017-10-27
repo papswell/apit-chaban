@@ -31,13 +31,6 @@ export default (url, parse) => {
       return document.body && document.body.innerHTML ? document.body.innerHTML : "";
     }))
     .then(parse)
-    // .then(_waitFor)
-    .catch(e => {
-      if (e.name === WAIT_FOR_TIMED_OUT) {
-        return Promise.resolve();
-      }
-      return Promise.reject(e);
-    })
     .then(r => {
       shutdown();
       return Promise.resolve(r);
