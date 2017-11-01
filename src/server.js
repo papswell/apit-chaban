@@ -2,15 +2,17 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import moment from 'moment';
 import cors from './cors';
+import delay from './delay';
 
 const CRASH_EVERY_X_CALLS = 0;
-const DATE_FORMAT = 'DD/MM/YYYY';
+const DATE_FORMAT = 'DD-MM-YYYY';
 
 export default (data) => {
   const server = express();
 
-  server.use(cors);
   server.use(cookieParser());
+  server.use(cors);
+  server.use(delay);
 
   server.get('/', (req, res) => {
 
@@ -34,6 +36,7 @@ export default (data) => {
         .filter(row => moment(row.date, DATE_FORMAT).isSameOrAfter(_from))
         .filter(row => moment(row.date, DATE_FORMAT).isSameOrBefore(_to))
         .filter((row, i) => !limit || i < limit);
+
 
       res
         .status(200)
