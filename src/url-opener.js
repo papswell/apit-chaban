@@ -5,7 +5,9 @@ import phantom from 'phantom';
  * @param  {String} url
  * @return {[type]}     [description]
  */
+
 export default (url, parse) => {
+
   let phInstance;
   let sitepage;
 
@@ -39,5 +41,15 @@ export default (url, parse) => {
       console.error('Unable to open url', e);
       shutdown();
       return Promise.reject(e);
+    });
+
+    process.on('SIGINT', () => {
+
+      if (phInstance) {
+        console.log('Shutting down PH');
+        shutdown();
+      }
+
+      process.exit(0);
     });
 };
