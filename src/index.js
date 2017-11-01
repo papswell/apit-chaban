@@ -1,5 +1,5 @@
 import server from './server';
-import getData from './get-data';
+import getData from './core/get-data';
 
 const URL = 'http://sedeplacer.bordeaux-metropole.fr/Toutes-les-infos-circulation/Pont-Chaban-Delmas-Fermetures';
 

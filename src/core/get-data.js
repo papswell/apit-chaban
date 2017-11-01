@@ -12,7 +12,8 @@ export default (url) => openUrl(url, (html) => {
   }
   return Promise.resolve(results);
 })
-.then(results => Promise.all(results.map(row => ({
+.then(results => Promise.all(results.map((row, i) => ({
+  id: i,
   date: row[2],
   start: row[3],
   end: row[4],
