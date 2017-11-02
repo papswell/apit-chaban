@@ -13,7 +13,7 @@ export default (url) => openUrl(url, (html) => {
   return Promise.resolve(results);
 })
 .then(results => Promise.all(results.map((row, i) => ({
-  id: i,
+  id: i + 1,
   date: row[2],
   start: row[3],
   end: row[4],
