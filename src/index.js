@@ -3,7 +3,7 @@ import getData from './core/get-data';
 
 const URL = 'http://sedeplacer.bordeaux-metropole.fr/Toutes-les-infos-circulation/Pont-Chaban-Delmas-Fermetures';
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 1337;
 
 getData(URL)
   .then((data) => {
