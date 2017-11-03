@@ -7,7 +7,7 @@
     "clean": "rimraf dist",
     "dev": "npm run build && node bin/dev",
     "build": "npm run clean && babel src -d dist",
-    "start": "node dist/index.js",
+    "start": "npm run dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
