@@ -1,3 +1,4 @@
+import moment from 'moment';
 import openUrl from './url-opener';
 
 // eslint-disable-next-line
@@ -20,4 +21,24 @@ export default (url) => openUrl(url, (html) => {
   totale: row[5].toLowerCase().indexOf('totale') >= 0,
   reason: row[1],
   link: `http://sedeplacer.bordeaux-metropole.fr${row[0]}`,
-}))));
+}))))
+// Add fake data for the sake of the exercise
+.then(data => {
+  const length = data.length;
+  const lastItem = data[length - 1];
+  return data.concat(
+    Array.from({ length: 12 })
+    .map((v, i) => {
+
+      const date = moment(lastItem.date, 'DD/MM/YY')
+        .add((i + 1) * 2, 'days')
+        .format('DD/MM/YY');
+
+      return {
+        ...lastItem,
+        date,
+        id: length + i + 1,
+      };
+    })
+  );
+});

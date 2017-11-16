@@ -1,14 +1,17 @@
 import { CRASH_EVERY_X_CALLS } from './../constants';
 export default (req, res, next) => {
 
+
+  const rand = Math.floor(Math.random() * 10) + 1;
+
   const currentCall = req.cookies.call || 0;
   const cookieValue = parseInt(currentCall, 10) + 1;
 
   res.cookie('call', cookieValue);
 
   if (
-    !CRASH_EVERY_X_CALLS ||
-    (currentCall && currentCall % CRASH_EVERY_X_CALLS !== 0)
+    true ||
+    rand > 5
   ) {
     next();
   } else {
